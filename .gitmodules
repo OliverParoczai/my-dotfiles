@@ -1,0 +1,6 @@
+[submodule "Scripts/zsh-autosuggestions"]
+	path = Scripts/zsh-autosuggestions
+	url = https://github.com/zsh-users/zsh-autosuggestions
+[submodule "Scripts/zsh-git-prompt"]
+	path = Scripts/zsh-git-prompt
+	url = https://github.com/zsh-git-prompt/zsh-git-prompt
