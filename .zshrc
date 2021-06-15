@@ -60,3 +60,11 @@ if [ -f ~/Scripts/Neofetch/neofetch ]; then
 else
     neofetch --config ~/Scripts/Neofetch/neofetch.conf
 fi
+
+if [ -d ~/Scripts/Overwrite ]; then
+    export PATH=~/Scripts/Overwrite:$PATH
+    echo "---------------------------------------------------"
+    echo "This unit houses the following custom commands:"
+    echo $(ls ~/Scripts/Overwrite)
+    echo ""
+fi
