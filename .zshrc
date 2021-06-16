@@ -75,5 +75,5 @@ fi
 
 #--RUNAFTER--#
 if [ -f ~/Scripts/RunAfter.sh ] && [ $RUNAFTER = true ]; then
-    ~/Scripts/RunAfter.sh
+    . ~/Scripts/RunAfter.sh
 fi
