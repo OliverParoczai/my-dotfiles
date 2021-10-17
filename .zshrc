@@ -5,7 +5,7 @@ source ~/Scripts/zsh-git-prompt/zshrc.sh
 source ~/Scripts/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 #--SETTINGS--#
-RUNAFTER=false   #enables running the Scripts/RunAfter.sh script after shell starts
+RUNAFTER=false   #enables running the ~/Scripts/RunAfter.sh script after shell starts
 OVERWRITE=false  #enables the ~/Scripts/Overwrite folder for commands that should be added to the path and/or overwritten
 
 #--PROMPT--#
