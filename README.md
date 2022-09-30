@@ -10,7 +10,7 @@ I mainly use this repository for quickly setting up my devices, but feel free to
 
 ```
 git clone https://github.com/OliverParoczai/my-dotfiles
-git submodule init
+git submodule update --init --recursive
 cd my-dotfiles
 ./INSTALL.sh
 ```
