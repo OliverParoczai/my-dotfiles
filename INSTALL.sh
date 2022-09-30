@@ -22,6 +22,28 @@ checkForPackages() {
 }
 
 copyFilesToHome() {
+  if ! command -v git &> /dev/null; then
+    echo "git not installed, please check submodules manually"
+  else
+    IFS=$'\n'
+    serror=0
+    sstatus=($(git submodule status | cut -c1-1))
+    for s in $sstatus; do
+      if [ "$s" == "-" ]; then
+        serror=1
+      fi
+    done
+    if [ $serror == 1 ]; then
+      echo "!> git submodules not installed correctly."
+      read -p "?> Proceed (y/N)? " choice
+      case "$choice" in
+        y|Y ) break;;
+        * ) echo "!> Exiting without running."; exit 0;;
+      esac
+    else
+      echo "i> No git errors found"
+    fi
+  fi
   for f in "${includedFiles[@]}"; do
     echo "i> Copying ./$f to ~/$f..."
     \cp -r ./$f ~
