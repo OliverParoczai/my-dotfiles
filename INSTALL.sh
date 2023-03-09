@@ -9,13 +9,11 @@ checkForPackages() {
     echo "i> Trying to install $pkg.."
     if command -v apt-get &> /dev/null; then
       su -c "apt-get install $pkg"
-      break
-    fi
-    if command -v pacman &> /dev/null; then
+    elif command -v pacman &> /dev/null; then
       su -c "pacman -S $pkg"
-      break
+    else
+      echo "!> Unknown package manager. Please install $pkg manually"
     fi
-    echo "!> Unknown package manager. Please install $pkg manually"
   else
     echo " installed"
   fi
@@ -37,7 +35,7 @@ copyFilesToHome() {
       echo "!> git submodules not installed correctly."
       read -p "?> Proceed (y/N)? " choice
       case "$choice" in
-        y|Y ) break;;
+        y|Y ) echo "!> There may be errors with the installation";;
         * ) echo "!> Exiting without running."; exit 0;;
       esac
     else
