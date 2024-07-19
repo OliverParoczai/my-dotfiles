@@ -2,6 +2,13 @@
 
 includedFiles=(.zshrc Scripts)
 
+if [ "$(basename $(pwd))" != "my-dotfiles" ] || [  "$(dirname "$0")" != "." ]; then
+  echo "!> Script only works if user is in the 'my-dotfiles' directory, and the script is called directly"
+  exit 0
+else
+  echo "i> Running from directory '$(basename $(pwd))' (relative folder is '$(dirname "$0")')"
+fi
+
 checkForPackages() {
   pkg=$1
   if ! command -v $pkg &> /dev/null; then
@@ -33,9 +40,10 @@ copyFilesToHome() {
     done
     if [ $serror == 1 ]; then
       echo "!> git submodules not installed correctly."
-      read -p "?> Proceed (y/N)? " choice
+
+      read -p "?> Try to repair submodules (y/N)? " choice
       case "$choice" in
-        y|Y ) echo "!> There may be errors with the installation";;
+        y|Y ) repairGitSubmodules;;
         * ) echo "!> Exiting without running."; exit 0;;
       esac
     else
@@ -47,6 +55,19 @@ copyFilesToHome() {
     \cp -r ./$f ~
     chmod -R +x ~/$f
   done
+}
+
+repairGitSubmodules(){
+  echo "i> Starting git submodule install..."
+  sstatus2=$(git submodule update --init --recursive)
+  if [ $sstatus2 != 0 ]; then
+    echo "!> Couldn't install git submodules, there may be errors with the installation"
+    read -p "?> Proceed (y/N)? " choice
+      case "$choice" in
+        y|Y ) echo "!> Notice: There may be errors with the installation";;
+        * ) echo "!> Exiting without running."; exit 0;;
+      esac
+  fi
 }
 
 echo -n "i> Checking for zsh..."
