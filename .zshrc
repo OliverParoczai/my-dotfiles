@@ -5,8 +5,8 @@ source ~/Scripts/zsh-git-prompt/zshrc.sh
 source ~/Scripts/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 #--SETTINGS--#
-RUNAFTER=true   #enables running the ~/Scripts/RunAfter.sh script after shell starts
-OVERWRITE=true  #enables the ~/Scripts/Overwrite folder for commands that should be added to the path and/or overwritten
+RUNAFTER=false   #enables running the ~/Scripts/RunAfter.sh script after shell starts
+OVERWRITE=false  #enables the ~/Scripts/Overwrite folder for commands that should be added to the path and/or overwritten
 FETCH="neofetch" #possible values: fastfetch, neofetch, none
 FETCH_USE_CUSTOM_LOGO=false #possible values: true: uses custom logo specified below (in run_fetch function) for fetch, false: uses standard distro logos for fetch
 
