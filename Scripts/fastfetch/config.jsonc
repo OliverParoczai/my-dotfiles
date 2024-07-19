@@ -24,11 +24,11 @@
     "break",
     "disk",
     "break",
-    {
-      "type": "battery",
-      "format": "{4} [{5}]"
-    },
-    "break",
+    //{
+    //  "type": "battery",
+    //  "format": "{4} [{5}]"
+    //},
+    //"break",
     "wifi",
     {
       "type": "localip",
