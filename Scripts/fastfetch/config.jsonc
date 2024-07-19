@@ -42,14 +42,6 @@
     },
     "break"
   ],
-  "logo": {
-    "source": "~/Scripts/fastfetch/ascii/thinkpad-v.txt",
-    "type": "file",
-    "color": {
-      "1": "white",
-      "2": "red"
-    }
-  },
   "display": {
     "percent": {
       "type": 3,
