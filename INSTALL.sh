@@ -59,8 +59,8 @@ copyFilesToHome() {
 
 repairGitSubmodules(){
   echo "i> Starting git submodule install..."
-  sstatus2=$(git submodule update --init --recursive)
-  if [ $sstatus2 != 0 ]; then
+  git submodule update --init --recursive
+  if [ $? != 0 ]; then
     echo "!> Couldn't install git submodules, there may be errors with the installation"
     read -p "?> Proceed (y/N)? " choice
       case "$choice" in
