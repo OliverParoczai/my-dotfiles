@@ -13,8 +13,8 @@ I mainly use this repository for quickly setting up my workstations but feel fre
 
 ```
 git clone https://github.com/OliverParoczai/my-dotfiles
-git submodule update --init --recursive
 cd my-dotfiles
+git submodule update --init --recursive
 ./INSTALL.sh
 ```
 
