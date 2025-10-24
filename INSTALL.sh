@@ -15,9 +15,9 @@ checkForPackages() {
     echo " not installed"
     echo "i> Trying to install $pkg.."
     if command -v apt-get &> /dev/null; then
-      su -c "apt-get install $pkg"
+      sudo apt-get install $pkg
     elif command -v pacman &> /dev/null; then
-      su -c "pacman -S $pkg"
+      sudo pacman -S $pkg
     else
       echo "!> Unknown package manager. Please install $pkg manually"
     fi
@@ -55,6 +55,17 @@ copyFilesToHome() {
     \cp -r ./$f ~
     chmod -R +x ~/$f
   done
+  askShellReplacement $(whoami)
+  askShellReplacement root
+}
+
+askShellReplacement() {
+  user=$1
+  read -p "?> Replace shell for $user (y/N)? " choice
+  case "$choice" in
+    y|Y ) sudo chsh -s $(which zsh) $user;;
+    * ) echo "!> Exiting without running.";;
+  esac
 }
 
 repairGitSubmodules(){
